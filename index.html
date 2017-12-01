@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面试理论</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            line-height: 1.5;
+        }
+        main{
+            padding: 0 20px;
+        }
+        main > div{
+            margin: 20px 0;
+        }
+        main h2{
+            font-size: 16px;
+            color: #333;
+            line-height: 2;
+        }
+        main p{
+            font-size: 14px;
+            color: #666;
+            text-indent: 24px;
+        }
+        main p span{
+            color: #333;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div>
+            <h2>Vue的生命周期</h2>
+            <p>Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载Dom、渲染→更新→渲染、卸载等一系列过程</p>
+            <p>
+                <span>beforeCreate:</span>在实例初始化之后，数据观测(data observer) 和 event/watcher 事件配置之前被调用
+            </p>
+            <p>
+                <span>created:</span>实例已经创建完成之后被调用。在这一步，实例已完成以下的配置：数据观测(data observer)，属性和方法的运算， watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见
+            </p>
+            <p>
+                <span>beforeMount:</span>在挂载开始之前被调用：相关的 render 函数首次被调用。
+            </p>
+            <p>
+                <span>mounted:</span>el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。
+            </p>
+            <p>
+                <span>beforeUpdate:</span>数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前
+            </p>
+            <p>
+                <span>updated:</span>由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子
+            </p>
+            <p>
+                <span>beforeDestroy:</span>实例销毁之前调用。在这一步，实例仍然完全可用
+            </p>
+            <p>
+                <span>destroyed:</span>Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。
+            </p>
+        </div>
+        <div>
+            <h2>vue中的MVVM模式 </h2>
+            <p>即Model-View-ViewModel</p>
+            <p>Vue是以数据为驱动的，Vue自身将DOM和数据进行绑定，一旦创建绑定，DOM和数据将保持同步，每当数据发生变化，DOM会跟着变化</p>
+            <p>ViewModel是Vue的核心，它是Vue的一个实例。Vue实例时作用域某个HTML元素上的，这个HTML元素可以是body，也可以是某个id所指代的元素</p>
+        </div>
+        <div>
+            <h2>v-show指令，v-if的区别</h2>
+            <p>条件渲染指令，与v-if不同的是，无论v-show的值为true或false，元素都会存在于HTML代码中；而只有当v-if的值为true，元素才会存在于HTML代码中。v-show指令只是设置了元素CSS的style值</p>
+        </div>
+        <div>
+            <h2>指令keep-alive </h2>
+            <p>
+                    在vue-router写着keep-alive，keep-alive的含义： 如果把切换出去的组件保留在内存中，可以保留它的状态或避免重新渲染。为此可以添加一个keep-alive指令 
+            </p>
+        </div>
+        <div>
+            <h2>vuex是什么？怎么使用？哪种功能场景使用它？</h2>
+            <p>vue框架中状态管理。在main.js引入store，注入。新建了一个目录store，….. export 。场景有：单页应用中，组件之间的状态。音乐播放、登录状态、加入购物车</p>
+        </div>
+        <div>
+            <h2>封装 vue 组件的过程？</h2>
+            <p>首先，组件可以提升整个项目的开发效率。能够把页面抽象成多个相对独立的模块，解决了我们传统项目开发：效率低、难维护、复用性等问题。</p>
+            <p>然后，使用Vue.extend方法创建一个组件，然后使用Vue.component方法注册组件。子组件需要数据，可以在props中接受定义。而子组件修改好数据后，想把数据传递给父组件。可以采用emit方法。</p>
+        </div>
+        <div>
+            <h2>认识vuex的</h2>
+            <p>vuex可以理解为一种开发模式或框架。</p>
+            <p>通过状态（数据源）集中管理驱动组件的变化</p>
+            <p>应用级的状态集中放在store中； 改变状态的方式是提交mutations，这是个同步的事物； 异步逻辑应该封装在action中。</p>
+        </div>
+        <div>
+            <h2>vue-loader是什么？使用它的用途有哪些？</h2>
+            <p>解析.vue文件的一个加载器，跟template/js/style转换成js模块。</p>
+            <p>用途：js可以写es6、style样式可以scss或less、template可以加jade等</p>
+        </div>
+        <div>
+            <h2>描述每个周期具体适合哪些场景</h2>
+            <p>生命周期钩子的一些使用方法： beforecreate : 可以在这加个loading事件，在加载实例时触发 created : 初始化完成时的事件写在这里，如在这结束loading事件，异步请求也适宜在这里调用 mounted : 挂载元素，获取到DOM节点 updated : 如果对数据统一处理，在这里写上相应函数 beforeDestroy : 可以做一个确认停止事件的确认框 nextTick : 更新数据后立即操作dom</p>
+        </div>
+        <div>
+            <h2>Promise</h2>
+            <p>Promise是一个构造函数，自己身上有all、reject、resolve这几个方法，原型上有then、catch等方法。</p>
+            <p>首先，它是一个对象，也就是说与其他JavaScript对象的用法，没有什么两样；其次，它起到代理作用（proxy），充当异步操作与回调函数之间的中介。它使得异步操作具备同步操作的接口，使得程序具备正常的同步运行的流程，回调函数不必再一层层嵌套。</p>
+        </div>
+        <div>
+            <h2>H5新增的api</h2>
+            <p><span>存储: </span>分为本地存储 localStorage和会话存储sessionStorage，在一定程度上解决了cookie的不便利性。存储上限5M;localStorage除非手动清除，否则永久存在，没有超时时间。
+                sessionStorage是只会在绘画期间有效，localStorage永久有效。</p>
+            <p><span>位置: </span>geolocation是有关用户隐私的API，需要得到用户的同意才能有效。为了安全限定，要求正式网站必须使用https协议。</p>
+            <p><span>拖拽: </span>draggable 设置为true 可以被拖拽</p>
+            <p><span>文件: </span>多文件上传 设置属性 multiple;限制上传文件的格式 属性 accept="image/jpeg" accept="text/html" image/*</p>
+            <p><span>FlieReader： </span>FlieReader类型实现的是一种异步文件读取机制。可以把FileReader想象成XMLHttpRequest，区别只是它读取的是文件心痛，而不是远程服务器。</p>
+            <p><span>history: </span>h5中的history对象新增了两个新方法：history.pushState()和history.replaeState(); pushState()是在history栈中添加一个新的条目，replaceState()是替换当前的记录值</p>
+        </div>
+        <div>
+            <h2>ES6兼容性</h2>
+            <p>针对ES6的新特性兼容性问题，目前解决的方案是使用语法解析转换工具将es6语法转化为大部分浏览器识别的es5语法，通用的转化方案有babel，traceur，jsx，typescript，es6-shim</p>
+        </div>
+    </main>
+</body>
+</html>
