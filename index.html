@@ -167,7 +167,7 @@
         </div>
         <div>
             <h2>vue编译模板的原理</h2>
-            <p>$mount 函数，主要是获取 template，然后进入 compileToFunctions 函数。
+            <p>而 2.0 中借鉴 React 的 Virtual DOM。基于 Virtual DOM，2.0 还可以支持服务端渲染（SSR），也支持 JSX 语法。$mount 函数，主要是获取 template，然后进入 compileToFunctions 函数。
 compileToFunctions 函数，主要将 template 编译成 render 函数。首先读缓存，没有缓存就调用 compile 方法拿到 render 函数 的字符串形式，再通过 new Function 的方式生成 render 函数。
 // 有缓存的话就直接在缓存里面拿</p>
         </div>
